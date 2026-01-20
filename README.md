@@ -1,15 +1,3 @@
-Here is a **complete, safe, submission-ready README**.
-You can **copy–paste this as-is** into `README.md`.
-
-It is:
-
-* honest (no overclaims)
-* evaluator-friendly
-* OS-agnostic (Windows + macOS + Linux)
-* aligned with your paper domain (efficient inference)
-
----
-
 # Low-Latency Vision System
 
 An **edge-oriented computer vision system** for image classification with optional object detection, designed to study **latency–accuracy trade-offs under CPU-only constraints**.
@@ -233,12 +221,6 @@ These are **expected trade-offs** in edge-oriented inference systems.
 
 ---
 
-## Conclusion
-
-This project presents a practical and transparent approach to deploying pretrained vision models under strict computational constraints, highlighting the trade-offs between **speed**, **accuracy**, and **interpretability**.
-
----
-
 ## Deactivating the Environment
 
 When finished:
@@ -246,3 +228,7 @@ When finished:
 ```bash
 deactivate
 ```
+---
+## Conclusion
+
+This project presents a practical and transparent approach to deploying pretrained vision models under strict computational constraints, highlighting the trade-offs between **speed**, **accuracy**, and **interpretability**.
