@@ -119,6 +119,7 @@ After activating the virtual environment:
 
 ```bash
 pip install --upgrade pip
+pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
 pip install -r requirements.txt
 ```
 
