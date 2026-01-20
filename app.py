@@ -23,7 +23,13 @@ st.title(APP_TITLE)
 # UI Controls
 model_choice = st.selectbox("Select Model", list(CLASSIFICATION_MODELS.keys()))
 resolution = st.selectbox("Input Resolution", RESOLUTION_OPTIONS)
-enable_detection = st.checkbox("Enable Object Detection (YOLO-style)")
+enable_detection = st.checkbox(
+    "Enable Object Detection (for explanation, not classification)"
+)
+st.caption(
+    "Detected objects are shown to explain classification results. "
+    "They are not used to modify or override the final prediction."
+)
 uploaded_file = st.file_uploader("Upload an image", type=["jpg", "png", "jpeg"])
 
 
@@ -66,8 +72,9 @@ if uploaded_file:
         total_time = (total_end - total_start) * 1000
 
         # ---------- Results ----------
-        st.success(f"Prediction: {cls_result['prediction']}")
-        st.write(f"Confidence: {cls_result['confidence']:.4f}")
+        st.success("Top-3 Predictions:")
+        for i, (label, score) in enumerate(cls_result["top3_predictions"], 1):
+            st.write(f"{i}. {label} — {score:.4f}")
 
         st.subheader("Latency Breakdown")
         st.write(f"Detection Time: {detection_time:.2f} ms")

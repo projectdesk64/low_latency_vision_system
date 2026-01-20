@@ -64,11 +64,16 @@ def run_classification(
     end = time.time()
     
     logits = outputs.logits
-    pred_id = logits.argmax(-1).item()
-    confidence = torch.softmax(logits, dim=1)[0][pred_id].item()
+    probs = torch.softmax(logits, dim=1)[0]
+    top3_probs, top3_ids = torch.topk(probs, 3)
+    
+    # Build Top-3 predictions list
+    top3_predictions = [
+        (model.config.id2label[top3_ids[i].item()], top3_probs[i].item())
+        for i in range(3)
+    ]
     
     return {
-        "prediction": model.config.id2label[pred_id],
-        "confidence": confidence,
+        "top3_predictions": top3_predictions,
         "inference_time_ms": (end - start) * 1000
     }
