@@ -45,7 +45,7 @@ def cached_load_detector():
 
 if uploaded_file:
     image = Image.open(uploaded_file).convert("RGB")
-    st.image(image, caption="Input Image", use_container_width=True)
+    st.image(image, caption="Input Image", width="stretch")
 
     processor, model = cached_load_classifier(CLASSIFICATION_MODELS[model_choice])
 
@@ -59,7 +59,7 @@ if uploaded_file:
             detection_time = det_result["inference_time_ms"]
 
             st.subheader("Detected Objects")
-            st.image(det_result["annotated_image"], use_container_width=True)
+            st.image(det_result["annotated_image"], width="stretch")
         else:
             detection_time = 0.0
 
